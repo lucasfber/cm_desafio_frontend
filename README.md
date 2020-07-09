@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+﻿# Desafio Backend - Casas Magalhães
 
-## Available Scripts
+Tecnologias usadas - **Backend**:
 
-In the project directory, you can run:
+- Node (12.18.2)
+- Express
+- MySQL
+- Knex (Query Builder)
 
-### `yarn start`
+Tecnologias usadas - **Frontend**:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- React Router
+- Axios
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Como usar:
 
-### `yarn test`
+## Frontend
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  Clone o repositório ou baixe o arquivo zipado para sua máquina, em seguida usando o terminal entre no diretório raiz do projeto, e execute o comando: `npm install` para baixar todas as dependências.
+2.  Usando o terminal entre no diretório raiz do projeto e execute: `npm run start` ou `yarn start` com isso a aplicação será iniciada em uma nova aba do seu navegador padrão. **É necessário que a aplicação backend esteja sendo executada na porta `5000`**
+3.  A aplicação frontend será executada na porta `3000`
 
-### `yarn build`
+## Backend
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1.  Clone o repositório ou baixe o arquivo zipado para sua máquina, em seguida usando o terminal entre no diretório raiz do projeto, e execute o comando: `npm install` para baixar todas as dependências.
+2.  É necessário possuir o banco de dados MySQL instalado na máquina em que você executar o projeto.
+3.  Usando o _MySQL-Workbench_ ou via linha de comando, crie um banco de dados com o nome "**cm_teste-db**"
+4.  Se necessário, modifique os campos do objeto _connection_ em "**backend/src/database/connection.js**" e inclua as credenciais que você utiliza no seu banco. A aplicação por padrão usa: **user = 'root'** e **password = 'root'**
+5.  O próximo passo é executar as _migrations_ para que as mesmas criem as tabelas utilizadas. Ainda na raiz do projeto execute: `npx knex migrate:latest` e aguarde, será informado quando o processo terminar com a mensage: "`Batch 1 run: 3 migrations`"
+6.  Após ter criado as tabelas, execute o comando: `npm run start` com isso o servidor já está pronto para receber requisições na porta `5000`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Documentação**
+A documentação dos endpoints utilizados na API pode ser consultada em: `http://localhost:5000/docs`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+**Info**: _Além de fonte de consulta, a interface fornecida pelo **Swagger UI** também permite testar os endpoints diretamente via navegador. Para isso, basta clicar para expandir umas das rotas, depois em **Try it out** no canto direito e por último em **Execute** mais abaixo._

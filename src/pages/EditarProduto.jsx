@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import LojaItem from "../components/LojaItem";
 
-const FormProduto = () => {
-  const [produto, setProduto] = useState({ nome: "", preco: 0 });
+const EditarProduto = ({ match, history }) => {
+  const id = match.params.id;
+  console.log(history);
+  const [produto, setProduto] = useState({ nome: "", preco: "" });
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/produtos/${id}`).then((response) => {
+      setProduto(response.data.data);
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("Editou");
     axios
-      .post("http://localhost:5000/produtos", produto)
-      .then((data) => console.log(data));
+      .put(`http://localhost:5000/produtos/${id}`, produto)
+      .then((response) => console.log(response));
+    history.push("/");
   };
 
   const handleChange = (e) => {
@@ -20,8 +30,8 @@ const FormProduto = () => {
   };
 
   return (
-    <div>
-      <h3>Nova Produto</h3>
+    <div className="mt-4">
+      <h3>Editar Produto</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nome">Nome:</label>
@@ -59,4 +69,4 @@ const FormProduto = () => {
   );
 };
 
-export default FormProduto;
+export default EditarProduto;
