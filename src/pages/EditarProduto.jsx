@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LojaItem from "../components/LojaItem";
 
 const EditarProduto = ({ match, history }) => {
   const id = match.params.id;
@@ -11,6 +10,7 @@ const EditarProduto = ({ match, history }) => {
     axios.get(`http://localhost:5000/produtos/${id}`).then((response) => {
       setProduto(response.data.data);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = (e) => {

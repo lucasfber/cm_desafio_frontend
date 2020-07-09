@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LojaItem from "../components/LojaItem";
 
 const AddProduto = ({ match, history }) => {
   const id = match.params.id;
@@ -13,6 +12,7 @@ const AddProduto = ({ match, history }) => {
     axios.get(`http://localhost:5000/lojas/${id}`).then((response) => {
       getProdutos();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSelectChange = (e) => {

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import LojaItem from "../components/LojaItem";
 
 const EditarLoja = ({ match, history }) => {
   const id = match.params.id;
-  console.log(history);
   const [loja, setLoja] = useState({ nome: "", endereco: "", telefone: "" });
 
   useEffect(() => {
     axios.get(`http://localhost:5000/lojas/${id}`).then((response) => {
       setLoja(response.data.data);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = (e) => {

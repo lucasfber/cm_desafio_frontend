@@ -8,6 +8,7 @@ const ProdutoInfo = ({ match, history }) => {
 
   useEffect(() => {
     getProduto();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getProduto = async () => {

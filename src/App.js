@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FormProduto from "./pages/FormProduto";
-import "./App.css";
 import Lojas from "./pages/Lojas";
 import FormLoja from "./pages/FormLoja";
 import MeusProdutos from "./pages/MeusProdutos";

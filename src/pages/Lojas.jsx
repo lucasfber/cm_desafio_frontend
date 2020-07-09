@@ -7,6 +7,7 @@ const Lojas = () => {
 
   useEffect(() => {
     getLojas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onDelete = (id) => {

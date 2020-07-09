@@ -7,12 +7,11 @@ const LojaInfo = ({ match, history }) => {
   const [loja, setLoja] = useState({ nome: "", endereco: "", telefone: "" });
   const [produtos, setLojaProdutos] = useState([]);
   const [messageNotFound, setMessageNotFound] = useState(false);
-  const [editar, setEditar] = useState(false);
-  const [quantidade, setQuantidade] = useState(1);
 
   useEffect(() => {
     getLoja();
     getLojaProdutos();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getLoja = async () => {
@@ -23,12 +22,6 @@ const LojaInfo = ({ match, history }) => {
       setMessageNotFound(true);
     }
   };
-
-  const handleChange = (e) => {
-    setQuantidade(e.target.value);
-  };
-
-  const handleUpdateQuantidade = (e) => {};
 
   const getLojaProdutos = async () => {
     try {
