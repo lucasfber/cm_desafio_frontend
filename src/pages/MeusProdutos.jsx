@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProdutoItem from "../components/ProdutoItem";
+import { API_URL } from "../utils/constants";
 
 const MeusProdutos = () => {
   const [produtos, setProdutos] = useState([]);
@@ -10,16 +11,14 @@ const MeusProdutos = () => {
   }, []);
 
   const getProdutos = async () => {
-    const response = await axios.get("http://localhost:5000/produtos");
-
-    console.log(response.data.data);
+    const response = await axios.get(`${API_URL}/produtos`);
     setProdutos(response.data.data);
   };
 
   const onDelete = (id) => {
     console.log("ID", id);
     axios
-      .delete(`http://localhost:5000/produtos/${id}`)
+      .delete(`${API_URL}/produtos/${id}`)
       .then((response) => console.log(response));
     setProdutos(produtos.filter((produto) => produto.id !== id));
   };

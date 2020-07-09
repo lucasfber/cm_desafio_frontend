@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const EditarLoja = ({ match, history }) => {
   const id = match.params.id;
   const [loja, setLoja] = useState({ nome: "", endereco: "", telefone: "" });
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/lojas/${id}`).then((response) => {
+    axios.get(`${API_URL}/lojas/${id}`).then((response) => {
       setLoja(response.data.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -16,7 +17,7 @@ const EditarLoja = ({ match, history }) => {
     e.preventDefault();
     console.log("Editou");
     axios
-      .put(`http://localhost:5000/lojas/${id}`, loja)
+      .put(`${API_URL}/lojas/${id}`, loja)
       .then((response) => console.log(response));
     history.push("/");
   };

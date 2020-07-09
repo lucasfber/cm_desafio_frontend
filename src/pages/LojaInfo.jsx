@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const LojaInfo = ({ match, history }) => {
   const id = match.params.id;
@@ -16,7 +17,7 @@ const LojaInfo = ({ match, history }) => {
 
   const getLoja = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/lojas/${id}`);
+      const response = await axios.get(`${API_URL}/lojas/${id}`);
       setLoja(response.data.data);
     } catch (error) {
       setMessageNotFound(true);
@@ -25,9 +26,7 @@ const LojaInfo = ({ match, history }) => {
 
   const getLojaProdutos = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/lojas/${id}/produtos`
-      );
+      const response = await axios.get(`${API_URL}/lojas/${id}/produtos`);
       setLojaProdutos(response.data.data);
     } catch (error) {
       setMessageNotFound(true);

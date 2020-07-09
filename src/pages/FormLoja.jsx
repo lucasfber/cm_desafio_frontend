@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_URL } from "../utils/constants";
 
 const FormLoja = ({ history }) => {
   const [loja, setLoja] = useState({ nome: "", endereco: "", telefone: "" });
@@ -9,7 +10,7 @@ const FormLoja = ({ history }) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:5000/lojas", loja)
+      .post(`${API_URL}/lojas`, loja)
       .then((data) => {
         console.log(data);
         setLoja({ nome: "", endereco: "", telefone: "" });

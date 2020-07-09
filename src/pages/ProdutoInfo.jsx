@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { API_URL } from "../utils/constants";
 
 const ProdutoInfo = ({ match, history }) => {
   const id = match.params.id;
@@ -13,7 +15,7 @@ const ProdutoInfo = ({ match, history }) => {
 
   const getProduto = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/produtos/${id}`);
+      const response = await axios.get(`${API_URL}/produtos/${id}`);
       setProduto(response.data.data);
     } catch (error) {
       setMessageNotFound(true);
@@ -22,6 +24,9 @@ const ProdutoInfo = ({ match, history }) => {
 
   return (
     <div>
+      <Link className="btn btn-default" to="/meus-produtos">
+        Voltar para Meus Produtos
+      </Link>
       {!messageNotFound && (
         <div className="mt-4">
           <h2>

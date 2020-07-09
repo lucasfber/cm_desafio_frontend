@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import LojaItem from "../components/LojaItem";
+import { API_URL } from "../utils/constants";
 
 const Lojas = () => {
   const [lojas, setLojas] = useState([]);
@@ -13,13 +14,13 @@ const Lojas = () => {
   const onDelete = (id) => {
     console.log("ID", id);
     axios
-      .delete(`http://localhost:5000/lojas/${id}`)
+      .delete(`${API_URL}/lojas/${id}`)
       .then((response) => console.log(response));
     setLojas(lojas.filter((loja) => loja.id !== id));
   };
 
   const getLojas = async () => {
-    const response = await axios.get("http://localhost:5000/lojas");
+    const response = await axios.get(`${API_URL}/lojas`);
 
     console.log(response.data.data);
     setLojas(response.data.data);

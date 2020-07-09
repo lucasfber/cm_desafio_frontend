@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 const ProdutoItem = ({ produto, onDelete }) => {
   return (
     <tr>
+      <td>
+        <Link className="" to={`/produtos/${produto.id}`}>
+          {produto.nome}
+        </Link>
+      </td>
       <td>{produto.nome}</td>
       <td>{produto.preco}</td>
       <td>
