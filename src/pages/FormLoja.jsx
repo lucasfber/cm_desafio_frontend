@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const FormLoja = () => {
+const FormLoja = ({ history }) => {
   const [loja, setLoja] = useState({ nome: "", endereco: "", telefone: "" });
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:5000/lojas", loja).then((data) => {
-      console.log(data);
-      setLoja({ nome: "", endereco: "", telefone: "" });
-    });
+    axios
+      .post("http://localhost:5000/lojas", loja)
+      .then((data) => {
+        console.log(data);
+        setLoja({ nome: "", endereco: "", telefone: "" });
+        history.push("/");
+      })
+      .catch((err) => {
+        setError(true);
+      });
   };
 
   const handleChange = (e) => {
@@ -23,10 +30,16 @@ const FormLoja = () => {
   return (
     <div className="mt-4">
       <h3>Nova Loja</h3>
+      {error && (
+        <h5 className="text-right text-danger">
+          Já existe uma loja cadastrada com esse nome! Por favor, escolha outro.
+        </h5>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nome">Nome:</label>
           <input
+            required
             type="text"
             className="form-control"
             id="nome"
@@ -39,6 +52,7 @@ const FormLoja = () => {
         <div className="form-group">
           <label htmlFor="endereco">Endereço:</label>
           <input
+            required
             type="text"
             className="form-control"
             id="endereco"
@@ -51,6 +65,7 @@ const FormLoja = () => {
         <div className="form-group">
           <label htmlFor="telefone">Telefone:</label>
           <input
+            required
             type="text"
             className="form-control"
             id="telefone"

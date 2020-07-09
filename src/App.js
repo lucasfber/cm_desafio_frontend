@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import EditarProduto from "./pages/EditarProduto";
 import LojaInfo from "./pages/LojaInfo";
 import ProdutoInfo from "./pages/ProdutoInfo";
+import AddProduto from "./pages/AddProduto";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/edit/lojas/:id" component={EditarLoja} />
           <Route exact path="/edit/produtos/:id" component={EditarProduto} />
+          <Route exact path="/add/produtos/:id" component={AddProduto} />
           <Route exact path="/lojas/:id" component={LojaInfo} />
           <Route exact path="/produtos/:id" component={ProdutoInfo} />
           <Route path="/nova-loja" component={FormLoja} />

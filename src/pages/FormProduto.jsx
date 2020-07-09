@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const FormProduto = () => {
-  const [produto, setProduto] = useState({ nome: "", preco: 0 });
+const FormProduto = ({ history }) => {
+  const [produto, setProduto] = useState({ nome: "", preco: 1 });
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
       .post("http://localhost:5000/produtos", produto)
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        history.push("/");
+      })
+      .catch((err) => {
+        setError(true);
+      });
   };
 
   const handleChange = (e) => {
@@ -22,6 +29,12 @@ const FormProduto = () => {
   return (
     <div>
       <h3>Nova Produto</h3>
+      {error && (
+        <h5 className="text-right text-danger">
+          Já existe um produto cadastrado com esse nome! Por favor, escolha
+          outro.
+        </h5>
+      )}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nome">Nome:</label>
@@ -40,11 +53,12 @@ const FormProduto = () => {
           <label htmlFor="preco">Preço:</label>
           <input
             required
-            type="text"
+            type="number"
+            min="1"
             className="form-control"
             id="preco"
             name="preco"
-            placeholder="Preõ do produto"
+            placeholder="Preço do produto"
             value={produto.preco}
             onChange={handleChange}
           />
@@ -52,7 +66,7 @@ const FormProduto = () => {
         <input
           className="btn btn-primary"
           type="submit"
-          value="Atualizar Produto"
+          value="Cadastrar Produto"
         />
       </form>
     </div>

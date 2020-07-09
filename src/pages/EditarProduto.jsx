@@ -50,11 +50,12 @@ const EditarProduto = ({ match, history }) => {
           <label htmlFor="preco">Preço:</label>
           <input
             required
-            type="text"
+            type="number"
             className="form-control"
+            min="1"
             id="preco"
             name="preco"
-            placeholder="Preõ do produto"
+            placeholder="Preço do produto"
             value={produto.preco}
             onChange={handleChange}
           />

@@ -23,14 +23,18 @@ const ProdutoInfo = ({ match, history }) => {
     <div>
       {!messageNotFound && (
         <div className="mt-4">
-          <h1>Produto: {produto.nome}</h1>
-          <h2>Preço: {produto.preco}</h2>
+          <h2>
+            Produto: <span className="text-muted">{produto.nome}</span>
+          </h2>
+          <h3>
+            Preço: <span className="text-muted">{produto.preco}</span>
+          </h3>
         </div>
       )}
       {messageNotFound && (
-        <h1 className="mt-4 text-center text-danger">
+        <h2 className="mt-4 text-center text-danger">
           Produto não encontrado!
-        </h1>
+        </h2>
       )}
     </div>
   );

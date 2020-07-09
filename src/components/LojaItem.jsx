@@ -12,6 +12,11 @@ const LojaItem = ({ loja, onDelete }) => {
       <td>{loja.endereco}</td>
       <td>{loja.telefone}</td>
       <td>
+        <Link className="btn btn-success" to={`/add/produtos/${loja.id}`}>
+          Adicionar produtos a loja
+        </Link>
+      </td>
+      <td>
         <Link className="btn btn-primary" to={`/edit/lojas/${loja.id}`}>
           Editar
         </Link>

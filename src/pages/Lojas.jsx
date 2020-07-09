@@ -34,7 +34,9 @@ const Lojas = () => {
             <th>Nome</th>
             <th>Endereço</th>
             <th>Telefone</th>
-            <th></th>
+            <th>Adicionar Produtos</th>
+            <th>Editar</th>
+            <th>Excluir</th>
           </tr>
         </thead>
         <tbody>
